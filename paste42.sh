@@ -3,6 +3,7 @@
 # tree [-s] [-t "filetype"] [-l] [-h] file
 
 # Variablen initialisieren & defaults setzen
+VERSION="20110429-1"
 ATTR=''
 OPTS=""
 TYPE="text"
@@ -16,6 +17,7 @@ usage() {
 	echo "  -t <type>    file type"
 	echo "  -l           filetypes"
 	echo "  -h           this help"
+	echo "  -u           check for update"
 }
 
 filetypes() {
@@ -25,17 +27,29 @@ filetypes() {
 	done
 }
 
+checkUpdate() {
+	SERV_VER=$(curl -s -S http://paste42.de/version.txt | sed -e 's/[^0-9\-]//g')
+	if [ "$SERV_VER" != "$VERSION" ] ; then
+		echo "Update available!"
+		echo "Your version:   $VERSION"
+		echo "Remote Version: $SERV_VER"
+	else
+		echo "No Updates."
+	fi
+}
+
 # wenn keine argumente, usage ausgeben
 if [ $# -eq 0 ] ; then usage ; exit ; fi
 
 # argumente auswerten
-while getopts st:lh opt ; do
+while getopts st:lhu opt ; do
 	case "$opt" in
 		\-)    break;;
 		s)    ATTR="$ATTR -d \"sec=true\"";;
 		t)    TYPE=$OPTARG;;
 		[hH]) usage;exit;;
 		l)    filetypes;exit;;
+		u)    checkUpdate;exit;;
 	esac
 done
 shift $(expr $OPTIND - 1)
