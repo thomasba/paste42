@@ -3,7 +3,7 @@
 # tree [-s] [-t "filetype"] [-l] [-h] file
 
 # Variablen initialisieren & defaults setzen
-VERSION="20110429-1"
+VERSION="20110429-2"
 ATTR=''
 OPTS=""
 TYPE="text"
