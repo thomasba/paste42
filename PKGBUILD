@@ -3,7 +3,7 @@
 
 pkgname=paste42
 pkgver=20110429
-pkgrel=1
+pkgrel=3
 pkgdesc="Utility to post text files to paste42.de using curl"
 arch=('i686' 'x86_64')
 url="http://paste42.de/"
