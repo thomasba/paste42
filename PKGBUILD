@@ -9,10 +9,24 @@ arch=('i686' 'x86_64')
 url="http://paste42.de/"
 license=('GPL')
 depends=('curl' 'bash')
+makedepends=('git')
 source=("http://paste42.de/paste42.sh")
-md5sums=('c0e08a4dbdca666cff77d9fa10fda7bd')
-sha1sums=("5f73caf9cb36f65c8e192050ec7a4a5c7e19d8bc")
- 
+
+_gitroot="git://thomasba.de/paste42.git"
+_gitname="paste42"
+
 build() {
-	install -D -m755 paste42.sh ${pkgdir}/usr/bin/paste42 || return 1
+	cd ${srcdir}
+	msg "Connecting to GIT server...."
+
+	if [ -d ${_gitname} ] ; then
+		cd ${_gitname} && git pull origin
+		msg "The local files are updated."
+	else
+		git clone ${_gitroot}
+	fi
+
+	msg "GIT checkout done or server timeout"
+
+	install -D -m755 ${_gitname}.sh ${pkgdir}/usr/bin/${_gitname} || return 1
 }
