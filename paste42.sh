@@ -33,7 +33,7 @@ filetypes() {
 }
 
 checkUpdate() {
-	SERV_VER=$(curl -s -S 'http://git.thomasba.de/cgit/paste42/plain/paste42.sh' | sed -e '/VERSION=.*/ !d;s/VERSION="\(.*\)"/\1/')
+	SERV_VER=$(curl -s -S 'http://git.thomasba.de/cgit/paste42/plain/paste42.sh' | sed -e '/^VERSION=.*/ !d;s/VERSION="\(.*\)"/\1/')
 	if [ "$SERV_VER" != "$VERSION" ] ; then
 		echo "Update available!"
 		echo "Your version:   $VERSION"
