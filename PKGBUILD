@@ -10,7 +10,7 @@ url="http://paste42.de/"
 license=('GPL')
 depends=('curl' 'bash')
 makedepends=('git')
-source=("http://paste42.de/paste42.sh")
+source=()
 
 _gitroot="git://thomasba.de/paste42.git"
 _gitname="paste42"
