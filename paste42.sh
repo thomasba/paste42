@@ -3,12 +3,12 @@
 # tree [-s] [-t "filetype"] [-l] [-h] file
 
 # Variablen initialisieren & defaults setzen
-VERSION="20110429-3"
+VERSION="20110510.0"
 ATTR=''
 OPTS=""
 EXP='0'
 TYPE="text"
-TYPES="4cs abap actionscript3 actionscript ada apache applescript apt_sources asm asp autoconf autohotkey autoit avisynth awk bash basic4gl bf bibtex blitzbasic bnf boo caddcl cadlisp cfdg cfm chaiscript cil clojure c_mac cmake cobol c cpp cpp-qt csharp css cuesheet dcs delphi diff div dos dot d ecmascript eiffel email erlang fo fortran freebasic fsharp gambas gdb genero genie gettext glsl gml gnuplot groovy gwbasic haskell hicest hq9plus html4strict icon idl ini inno intercal io java5 java javascript j jquery kixtart klonec klonecpp latex lisp locobasic logtalk lolcode lotusformulas lotusscript lscript lsl2 lua m68k magiksf make mapbasic matlab mirc mmix modula2 modula3 mpasm mxml mysql newlisp nsis oberon2 objc ocaml-brief ocaml oobas oracle11 oracle8 oxygene oz pascal pcre perl6 perl per pf php-brief php pic16 pike pixelbender plsql postgresql povray powerbuilder powershell progress prolog properties providex purebasic python qbasic q rails rebol reg robots rpmspec rsplus ruby sas scala scheme scilab sdlbasic smalltalk smarty sql systemverilog tcl teraterm text thinbasic tsql typoscript unicon vala vbnet vb verilog vhdl vim visualfoxpro visualprolog whitespace whois winbatch xbasic xml xorg_conf xpp 80"
+TYPES="4cs 6502acme 6502kickass 6502tasm 68000devpac abap actionscript3 actionscript ada algol68 apache applescript apt_sources asm asp autoconf autohotkey autoit avisynth awk bascomavr bash basic4gl bf bibtex blitzbasic bnf boo caddcl cadlisp cfdg cfm chaiscript cil c_loadrunner clojure c_mac cmake cobol coffeescript c cpp cpp-qt csharp css cuesheet dcs delphi diff div dos dot d ecmascript eiffel email epc e erlang euphoria f1 falcon fo fortran freebasic fsharp gambas gdb genero genie gettext glsl gml gnuplot go groovy gwbasic haskell hicest hq9plus html4strict html5 icon idl ini inno intercal io java5 java javascript j jquery kixtart klonec klonecpp latex lb lisp llvm locobasic logtalk lolcode lotusformulas lotusscript lscript lsl2 lua m68k magiksf make mapbasic matlab mirc mmix modula2 modula3 mpasm mxml mysql newlisp nsis oberon2 objc objeck ocaml-brief ocaml oobas oracle11 oracle8 oxygene oz pascal pcre perl6 perl per pf php-brief php pic16 pike pixelbender pli plsql postgresql povray powerbuilder powershell proftpd progress prolog properties providex purebasic pycon python qbasic q rails rebol reg robots rpmspec rsplus ruby sas scala scheme scilab sdlbasic smalltalk smarty sql systemverilog tcl teraterm text thinbasic tsql typoscript unicon uscript vala vbnet vb verilog vhdl vim visualfoxpro visualprolog whitespace whois winbatch xbasic xml xorg_conf xpp yaml z80 zxbasic"
 
 
 usage() {
