@@ -2,7 +2,7 @@
 # PKGBUILD for ArchLinux
 
 pkgname=paste42
-pkgver=20110510.0
+pkgver=20110510.1
 pkgrel=3
 pkgdesc="Utility to post text files to paste42.de using curl"
 arch=('i686' 'x86_64')

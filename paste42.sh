@@ -1,9 +1,9 @@
 #!/bin/bash
 # Aufrufsyntax:
-# tree [-s] [-t "filetype"] [-l] [-h] file
+# paste42.sh [-s] [-t "filetype"] [-l] [-h] [-u] file
 
 # Variablen initialisieren & defaults setzen
-VERSION="20110510.0"
+VERSION="20110510.1"
 ATTR=''
 OPTS=""
 EXP='0'
