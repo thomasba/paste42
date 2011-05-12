@@ -25,6 +25,9 @@ usage() {
 	echo "                 10m = 10 minutes ; 1h = 1 hour ; 1d = 1day ;"
 	echo "                 1w = 1 week ; 4w = 4weeks ; 1y = 1 year ;"
 	echo "                 or date: YYYY-MM-DD HH:II:SS"
+	echo "  -p           set a password to delete the paste"
+	echo ""
+	echo "Version: $VERSION"
 }
 
 filetypes() {
