@@ -3,13 +3,15 @@
 # paste42.sh [-s] [-t "filetype"] [-l] [-h] [-u] file
 
 # Variablen initialisieren & defaults setzen
-VERSION="20110510.1"
+VERSION="20110512.1"
 ATTR=''
 OPTS=""
 EXP='0'
 TYPE="text"
 TYPES="4cs 6502acme 6502kickass 6502tasm 68000devpac abap actionscript3 actionscript ada algol68 apache applescript apt_sources asm asp autoconf autohotkey autoit avisynth awk bascomavr bash basic4gl bf bibtex blitzbasic bnf boo caddcl cadlisp cfdg cfm chaiscript cil c_loadrunner clojure c_mac cmake cobol coffeescript c cpp cpp-qt csharp css cuesheet dcs delphi diff div dos dot d ecmascript eiffel email epc e erlang euphoria f1 falcon fo fortran freebasic fsharp gambas gdb genero genie gettext glsl gml gnuplot go groovy gwbasic haskell hicest hq9plus html4strict html5 icon idl ini inno intercal io java5 java javascript j jquery kixtart klonec klonecpp latex lb lisp llvm locobasic logtalk lolcode lotusformulas lotusscript lscript lsl2 lua m68k magiksf make mapbasic matlab mirc mmix modula2 modula3 mpasm mxml mysql newlisp nsis oberon2 objc objeck ocaml-brief ocaml oobas oracle11 oracle8 oxygene oz pascal pcre perl6 perl per pf php-brief php pic16 pike pixelbender pli plsql postgresql povray powerbuilder powershell proftpd progress prolog properties providex purebasic pycon python qbasic q rails rebol reg robots rpmspec rsplus ruby sas scala scheme scilab sdlbasic smalltalk smarty sql systemverilog tcl teraterm text thinbasic tsql typoscript unicon uscript vala vbnet vb verilog vhdl vim visualfoxpro visualprolog whitespace whois winbatch xbasic xml xorg_conf xpp yaml z80 zxbasic"
+pw=0
 
+trap 'stty echo;exit 1;' 3 9 15
 
 usage() {
 	echo "Usage:"
@@ -47,7 +49,7 @@ checkUpdate() {
 if [ $# -eq 0 ] ; then usage ; exit ; fi
 
 # argumente auswerten
-while getopts st:lhue: opt ; do
+while getopts pst:lhue: opt ; do
 	case "$opt" in
 		\-)    break;;
 		s)    ATTR=$ATTR' -d sec=true';;
@@ -55,7 +57,8 @@ while getopts st:lhue: opt ; do
 		[hH]) usage;exit;;
 		l)    filetypes;exit;;
 		u)    checkUpdate;exit;;
-		e)    ATTR=$ATTR' -d exp='$(echo $OPTARG|sed -e 's/[^0-9:\.a-zA-Z ,]//g')
+		p)    pw=1;;
+		e)    ATTR=$ATTR' -d exp='$(echo $OPTARG|sed -e 's/[^0-9:\.a-zA-Z ,]//g');;
 	esac
 done
 shift $(expr $OPTIND - 1)
@@ -86,6 +89,18 @@ if [ $# -gt 1 ] ; then
 	echo "only the first file will be used ;)" >&2
 fi
 
+if [ $pw -eq 1 ] ; then
+	echo "Please choose the Passwort:"
+	password="";password2="1"
+	while [ ! "$password" = "$password2" ] ; do
+		if [ ! "$password" = "" ] ; then echo "The passwords didn't match." ; fi
+		echo -ne "  Password: "
+		stty -echo ; read password  ; stty echo
+		echo -ne "\n  Repeat the password: "
+		stty -echo ; read password2 ; stty echo
+		echo ""
+	done
+fi
 
 # und die daten absenden.
-curl -s -S -d "title=curl paste of $1" $ATTR -d "type=$TYPE" --data-urlencode "text@$1" 'http://paste42.de/save'
+curl -s -S --data-urlencode "del=$password" -d "title=curl paste of $1" $ATTR -d "type=$TYPE" --data-urlencode "text@$1" 'http://paste42.de/save'
