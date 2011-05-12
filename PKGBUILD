@@ -24,6 +24,7 @@ build() {
 		msg "The local files are updated."
 	else
 		git clone ${_gitroot}
+		cd ${_gitname}
 	fi
 
 	msg "GIT checkout done or server timeout"
