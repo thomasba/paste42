@@ -3,7 +3,7 @@
 # paste42.sh [-s] [-t "filetype"] [-l] [-h] [-u] file
 
 # Variablen initialisieren & defaults setzen
-VERSION="20110512.1"
+VERSION="20110621.1"
 ATTR=''
 OPTS=""
 EXP='0'
@@ -105,5 +105,7 @@ if [ $pw -eq 1 ] ; then
 	done
 fi
 
+filename=`basename $1`
+
 # und die daten absenden.
-curl -s -S --data-urlencode "del=$password" -d "title=curl paste of $1" $ATTR -d "type=$TYPE" --data-urlencode "text@$1" 'http://paste42.de/save'
+curl -s -S --data-urlencode "del=$password" -d "title=curl paste of $filename" $ATTR -d "type=$TYPE" --data-urlencode "text@$1" 'http://paste42.de/save'
