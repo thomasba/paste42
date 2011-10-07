@@ -12,10 +12,10 @@ A small bash scipt pasting files to paste42.de
 # Installation
 
 * Arch Linux
-    * get the PKGBUIL
-    * run makepkg
+    * get the `PKGBUILD`
+    * run `makepkg`
 * Other Linux Systems
-    * install -D -m755 paste42.sh /usr/bin/paste42
+    * `install -D -m755 paste42.sh /usr/bin/paste42`
 
 # Usage
 
