@@ -2,17 +2,17 @@
 # PKGBUILD for ArchLinux
 
 pkgname=paste42
-pkgver=20110621.1
+pkgver=20161108.1
 pkgrel=1
 pkgdesc="Utility to post text files to paste42.de using curl"
 arch=('i686' 'x86_64')
-url="http://paste42.de/"
+url="https://paste42.de/"
 license=('GPL')
 depends=('curl' 'bash')
 makedepends=('git')
 source=()
 
-_gitroot="git://thomasba.de/paste42.git"
+_gitroot="git://git.thomasba.de/paste42.git"
 _gitname="paste42"
 
 build() {
@@ -28,6 +28,8 @@ build() {
 	fi
 
 	msg "GIT checkout done or server timeout"
+}
 
-	install -D -m755 ${_gitname}.sh ${pkgdir}/usr/bin/${_gitname} || return 1
+package() {
+	install -D -m755 "${srcdir}/${_gitname}/${_gitname}.sh" "${pkgdir}/usr/bin/${_gitname}" || return 1
 }
